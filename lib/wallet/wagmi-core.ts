@@ -4,6 +4,10 @@ import { base } from "@reown/appkit/networks"
 
 export const projectId = process.env.NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID || ""
 
+if (!projectId) {
+  throw new Error("NEXT_PUBLIC_WALLETCONNECT_PROJECT_ID is not set")
+}
+
 export const networks = [base] as [typeof base]
 
 export const wagmiAdapter = new WagmiAdapter({
