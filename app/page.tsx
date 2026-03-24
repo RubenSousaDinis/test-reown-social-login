@@ -29,7 +29,7 @@ export default function Home() {
         </div>
         <div className="text-center">
           <p className="text-sm text-gray-500 uppercase tracking-wide mb-1">Chain</p>
-          <p className="font-semibold">{chain?.name ?? "Unknown"} (ID: {chain?.id})</p>
+          <p className="font-semibold">{chain ? `${chain.name} (ID: ${chain.id})` : "Unknown network"}</p>
         </div>
         <button
           onClick={() => disconnect()}
