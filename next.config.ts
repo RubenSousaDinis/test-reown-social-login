@@ -27,7 +27,11 @@ const nextConfig: NextConfig = {
     config.plugins.push(
       new webpack.NormalModuleReplacementPlugin(/.*\/test\/.*/, emptyModulePath),
       new webpack.NormalModuleReplacementPlugin(/.*\.(test|spec)\.(js|mjs|ts|tsx)$/, emptyModulePath),
-      new webpack.IgnorePlugin({ resourceRegExp: /^desm$/ })
+      new webpack.IgnorePlugin({ resourceRegExp: /^desm$/ }),
+      // Optional @wagmi/connectors deps — not used by AppKit default connectors
+      new webpack.IgnorePlugin({ resourceRegExp: /^@metamask\/connect-evm$/ }),
+      new webpack.IgnorePlugin({ resourceRegExp: /^porto$/ }),
+      new webpack.IgnorePlugin({ resourceRegExp: /^porto\/internal$/ })
     )
 
     return config
