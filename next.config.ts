@@ -1,9 +1,5 @@
 import path from 'path'
-import { fileURLToPath } from 'url'
 import type { NextConfig } from 'next'
-
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
 
 const nextConfig: NextConfig = {
   compiler: {
@@ -27,7 +23,7 @@ const nextConfig: NextConfig = {
     // Required by AppKit — prevents webpack from bundling Node-only modules
     config.externals = [...(config.externals ?? []), 'pino-pretty', 'lokijs', 'encoding']
 
-    const emptyModulePath = path.resolve(__dirname, 'empty-module.js')
+    const emptyModulePath = path.join(process.cwd(), 'empty-module.js')
     config.plugins.push(
       new webpack.NormalModuleReplacementPlugin(/.*\/test\/.*/, emptyModulePath),
       new webpack.NormalModuleReplacementPlugin(/.*\.(test|spec)\.(js|mjs|ts|tsx)$/, emptyModulePath),
