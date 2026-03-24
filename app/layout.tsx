@@ -1,3 +1,4 @@
+import type React from "react"
 import type { Metadata } from "next"
 import { cookies } from "next/headers"
 import { Web3Provider } from "@/components/providers/web3-provider"

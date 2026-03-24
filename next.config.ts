@@ -25,7 +25,7 @@ const nextConfig: NextConfig = {
   },
   webpack: (config, { webpack }) => {
     // Required by AppKit — prevents webpack from bundling Node-only modules
-    config.externals.push('pino-pretty', 'lokijs', 'encoding')
+    config.externals = [...(config.externals ?? []), 'pino-pretty', 'lokijs', 'encoding']
 
     const emptyModulePath = path.resolve(__dirname, 'empty-module.js')
     config.plugins.push(
