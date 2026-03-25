@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { cookies } from "next/headers"
+import { headers } from "next/headers"
 import { Web3Provider } from "@/components/providers/web3-provider"
 import "./globals.css"
 
@@ -14,8 +14,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const cookieStore = await cookies()
-  const cookieHeader = cookieStore.toString()
+  const headersList = await headers()
+  const cookieHeader = headersList.get("cookie") ?? ""
 
   return (
     <html lang="en">
